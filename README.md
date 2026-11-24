@@ -23,8 +23,7 @@
 12. [Updating a Service](#12-updating-a-service)
 13. [Useful Commands](#13-useful-commands)
 14. [Troubleshooting](#14-troubleshooting)
-15. [Demo Flow](#15-demo-flow)
-16. [Resume Summary & Interview Explanation](#16-resume-summary--interview-explanation)
+
 ---
  
 ## 1. Overview
@@ -94,7 +93,7 @@ flowchart TD
     end
 ```
  
-### 2.3 Routing & database map
+
  
 ```
 Browser
@@ -129,7 +128,7 @@ Monitoring:
   Grafana    -> Prometheus
 ```
  
-### 2.4 Order placement sequence
+### 2.3 Order placement sequence
  
 ```mermaid
 sequenceDiagram
@@ -160,7 +159,7 @@ sequenceDiagram
     G-->>B: Response
 ```
  
-### 2.5 Monitoring flow
+### 2.4 Monitoring flow
  
 ```mermaid
 flowchart LR
@@ -809,47 +808,4 @@ curl http://localhost:8082/metrics
 ```
  
 ---
- 
-## 15. Demo Flow
- 
-1. Open the frontend
-2. Register a user
-3. Log in
-4. Load products
-5. Check stock
-6. Add a product to the cart
-7. Show the cart stored in Redis
-8. Place an order
-9. Order Service calls Inventory Service
-10. Order Service calls Payment Service
-11. Payment Service stores the transaction
-12. Shipping Service creates a tracking number
-13. Notification Service records a message
-14. Check MySQL data
-15. Check Redis data
-16. Open the Grafana dashboard
-17. Generate payment failures
-18. Show the Prometheus alert firing
-19. Restart or scale a Kubernetes service
----
- 
-## 16. Resume Summary & Interview Explanation
- 
-**Resume summary**
- 
-Built and deployed CloudCart, a production-style e-commerce microservices platform on Kubernetes using React, Node.js, MySQL, Redis, Docker, NGINX Ingress, Prometheus, and Grafana. Implemented an API Gateway pattern to route frontend requests to independent backend microservices including Auth, Product, Inventory, Cart, Order, Payment, Shipping, Notification, and Review services. Deployed MySQL as a StatefulSet with persistent storage and Redis for cart/session caching. Configured Kubernetes Deployments, Services, Secrets, ConfigMaps, Ingress, readiness/liveness probes, resource limits, and monitoring with Prometheus and Grafana.
- 
-**Interview explanation**
- 
-I built a production-style e-commerce microservices platform on Kubernetes. Users reach the React frontend through an AWS Load Balancer and NGINX Ingress. The frontend calls backend APIs through an API Gateway, which routes traffic to independent Node.js microservices (Auth, Product, Inventory, Cart, Order, Payment, Shipping, Notification, Review). MySQL runs as a StatefulSet with a separate database per service, and Redis handles cart storage and product caching. The Order Service coordinates Inventory, Payment, Shipping and Notification to complete an order. Each service exposes health, readiness and Prometheus metrics endpoints. The platform uses Deployments, Services, Secrets, ConfigMaps, Ingress, resource limits, probes and HPAs. Prometheus scrapes metrics via ServiceMonitor, Grafana visualizes them, and PrometheusRule alerts detect service failures and payment issues.
- 
----
- 
-### Key Points
- 
-- Frontend served at `/`; API Gateway serves `/api` and routes to microservices
-- Each microservice is independently deployable and scalable
-- MySQL uses persistent EBS storage; Redis handles cart sessions and caching
-- Prometheus and Grafana monitor the whole platform
-> **Security note:** The sample passwords in the original notes (e.g. Grafana `admin123`, MySQL `root123`) are for lab use only. Change them and keep real secrets out of Git for any non-demo environment.
  
