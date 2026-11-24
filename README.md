@@ -2,7 +2,7 @@
  
 > A production-style, full-stack e-commerce platform built with **React, Node.js microservices, MySQL, Redis**, deployed on a **kOps Kubernetes cluster (AWS)** with **NGINX Ingress, Prometheus and Grafana**.
  
-**Designed by:** Reyaz Sir
+**Designed by:** Vikas jagtap 
 **Project type:** Full-stack Kubernetes-based microservices project
  
 ---
